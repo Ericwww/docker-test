@@ -1,4 +1,5 @@
-FROM centos
-RUN yum install wget \
-    && wget -O redis.tar.gz "http://download.redis.io/releases/redis-5.0.3.tar.gz" \
-    && tar -xvf redis.tar.gz
+FROM nginx
+COPY ./index.html /usr/share/nginx/html/
+ADD default.conf /etc/nginx/conf.d/
+WORKDIR /usr/share/nginx/html
+RUN chmod -R a+rx *
